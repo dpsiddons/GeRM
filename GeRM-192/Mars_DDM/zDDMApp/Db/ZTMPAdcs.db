@@ -1,0 +1,15 @@
+record(ai, "$(P)$(R):ztmp") {
+  field(DESC, "ztmp")
+  field(DTYP, "ZTMP A-D Converter")
+  field(INP,"@0") 
+  field(LINR,"SLOPE")
+  field(EGUF,"4.096")
+  field(EGUL,"0.0")
+  field(HOPR,"4.096")
+  field(LOPR,"0.0")
+  field(ESLO,"0.123041")
+  field(EOFF,"-273.03")
+  field(PREC,"3")
+  field(EGU,"deg. C")
+  field(SCAN, "2 second")
+}

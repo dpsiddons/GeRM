@@ -1,0 +1,8 @@
+record(zDDM, "$(P)$(R)") {
+  field(DTYP, "NSLS detector")
+  field(INP,"#C0 S1 @192")
+  field(PINI,"YES")
+  field(GAIN, 0)
+  field(EGU, "counts")
+}
+

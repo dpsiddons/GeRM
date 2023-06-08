@@ -1,0 +1,40 @@
+record(ao, "$(P)$(R):HV") {
+  field(DESC, "HV")
+  field(DTYP, "I2C D-A Converter")
+  field(OUT,"#C0 S5 @12, 0") 
+  field(LINR,"LINEAR")
+  field(EGUF,"500.0")
+  field(EGUL,"0.0")
+  field(HOPR,"200.0")
+  field(LOPR,"0.0")
+  field(SCAN,"1 second")
+  field(OROC,"2")
+  field(PREC,"3")
+  field(EGU,"Volts")
+}
+
+record(ao, "$(P)$(R):P1") {
+  field(DESC, "Peltier #1")
+  field(DTYP, "I2C D-A Converter")
+  field(OUT,"#C0 S6 @12, 0")
+  field(LINR,"LINEAR")
+  field(EGUF,"5.0")
+  field(EGUL,"0.0")
+  field(HOPR,"5.0")
+  field(LOPR,"0.0")
+  field(PREC,"3")
+  field(EGU,"Volts")
+}
+record(ao, "$(P)$(R):P2") {
+  field(DESC, "Peltier #2")
+  field(DTYP, "I2C D-A Converter")
+  field(OUT,"#C0 S2 @12, 0")
+  field(LINR,"LINEAR")
+  field(EGUF,"5.0")
+  field(EGUL,"0.0")
+  field(HOPR,"5.0")
+  field(LOPR,"0.0")
+  field(PREC,"3")
+  field(EGU,"Volts")
+}
+
