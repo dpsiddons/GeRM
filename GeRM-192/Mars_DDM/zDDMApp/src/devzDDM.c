@@ -667,9 +667,11 @@ extern int zDDM_NCHAN;
 	   for(i=0;i<zDDM_NCHAN;i++){
 	     intens[i]=0;
 	     }
-	     pscal->runno=fpgabase[FRAME_NO];
+	     //pscal->runno=fpgabase[FRAME_NO];
+	     pscal->runno=pl_register_read(fd,FRAME_NO);
 	   fifo_enable(); /* enable fifo */
 //	   fpgabase[TRIG]=val; /* start count */
+//	   pl_register_write(fd,TRIG,val);
 	   }
 	if(val==0){
 	   fifo_disable(); /* disable fifo */
@@ -1817,5 +1819,4 @@ void registerbits(void){
         }
 
 epicsExportRegistrar(registerbits); 
-
 
