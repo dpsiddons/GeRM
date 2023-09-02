@@ -627,19 +627,19 @@ recordtype(zDDM) {
 		interest(4)
 		extra("void *           pthrsh")
 		}
-         field(STAT, DBF_NOACCESS){
+         field(STATS, DBF_NOACCESS){
 		prompt("Chip statistics")
 		promptgroup(GUI_COMMON)
 		special(SPC_DBADDR)
 		interest(4)
-		extra("void *           stat")
+		extra("void *           stats")
 		}
-	field(PSTAT, DBF_NOACCESS){
+	field(PSTATS, DBF_NOACCESS){
 		prompt("Chip statistics")
 		promptgroup(GUI_COMMON)
 		special(SPC_NOMOD)
 		interest(4)
-		extra("void *           pstat")
+		extra("void *           pstats")
 		}
 
 	field(TPAMP, DBF_ULONG){
