@@ -627,6 +627,20 @@ recordtype(zDDM) {
 		interest(4)
 		extra("void *           pthrsh")
 		}
+         field(STAT, DBF_NOACCESS){
+		prompt("Chip statistics")
+		promptgroup(GUI_COMMON)
+		special(SPC_DBADDR)
+		interest(4)
+		extra("void *           stat")
+		}
+	field(PSTAT, DBF_NOACCESS){
+		prompt("Chip statistics")
+		promptgroup(GUI_COMMON)
+		special(SPC_NOMOD)
+		interest(4)
+		extra("void *           pstat")
+		}
 
 	field(TPAMP, DBF_ULONG){
 		prompt("Test pulse amplitude")
