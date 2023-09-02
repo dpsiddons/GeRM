@@ -358,7 +358,7 @@ struct dbAddr *paddr;
       }
       case zDDMRecordSTATS:{
       paddr->pfield = (void *)(pzDDM->pstats);
-      paddr->no_elements = zDDM_NCHIPS+1;
+      paddr->no_elements = 13;
       paddr->field_type = DBF_LONG;
       paddr->field_size = sizeof(int);
       paddr->dbr_field_type = DBR_LONG;
@@ -449,6 +449,13 @@ static long get_array_info(DBADDR *paddr, long *no_elements, long *offset)
       printf("get_array_info: THRSH\n");
       break;
       }
+      case zDDMRecordSTATS:{
+      *no_elements =  13;
+      *offset = 
+      printf("get_array_info: STATS\n");
+      break;
+      }
+	   
      }
    return(0);
 }
@@ -500,6 +507,7 @@ static long init_record(zDDMRecord *pscal, int pass)
 		pscal->poffs = (float *)calloc(pscal->nelm,sizeof(float));
 		pscal->pthtr = (unsigned char *)calloc(pscal->nelm,sizeof(char));
 		pscal->pthrsh = (unsigned int *)calloc(pscal->nchips,sizeof(int));
+		pscal->pstats = (unsigned int *)calloc(13,sizeof(int));
 		pscal->pintens = (unsigned int *)calloc(pscal->nelm,sizeof(int));
 		pscal->pputr = (unsigned char *)calloc(pscal->nelm,sizeof(char));
 		pscal->pmca = (unsigned int *)calloc(pscal->nelm*4096,sizeof(int));
@@ -530,6 +538,7 @@ static long init_record(zDDMRecord *pscal, int pass)
 		thtr=pscal->pthtr;
 		putr=pscal->pputr;
 		thrsh=pscal->pthrsh;
+		stats=pscal->pstats;
 		intens=pscal->pintens;
 		mca=pscal->pmca;
 		tdc=pscal->ptdc;
@@ -957,7 +966,7 @@ static long special(dbAddr *paddr, int after)
 	char ip[64];
 	unsigned int addr, tok[4];
 	static int pmode;
-	unsigned int *mca, *spct, *thrsh;
+	unsigned int *mca, *spct, *thrsh, *stats;
 	unsigned char *chen, *tsen, *thtr, *putr;
 	float *spctx, *slp, *offs;
         struct rpvtStruct *prpvt = (struct rpvtStruct *)pscal->rpvt;
@@ -976,13 +985,13 @@ static long special(dbAddr *paddr, int after)
 	thtr=pscal->pthtr;
 	putr=pscal->pputr;
 	thrsh=pscal->pthrsh;
+	stats=pscal->stats
         monch=pscal->monch;
         nelm=pscal->nelm;
 
 	Debug(5, "special: entry; after=%d\n", after);
 	if (!after) return (0);
 
-	mars_modified=0;
 	mars_modified=0;
 	pscal->chip=pscal->monch/32; /* 32 channels per chip */
 	pscal->chan=pscal->monch%32;
