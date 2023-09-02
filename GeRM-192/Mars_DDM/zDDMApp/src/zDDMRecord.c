@@ -101,6 +101,19 @@ extern epicsTimerQueueId	zDDMWdTimerQ;
 #define COUNT_TIME 53
 #define FRAME_NO  54
 #define COUNT_MODE 55
+#define FRAME_COUNT 64
+#define FLAG_0 65
+#define FLAG_1 66
+#define FLAG_2 67
+#define FLAG_3 68
+#define FLAG_4 69
+#define FLAG_5 70
+#define FLAG_6 71
+#define FLAG_7 72
+#define FLAG_8 73
+#define FLAG_9 74
+#define FLAG_10 75
+#define FLAG_11 76
 
 #ifdef NODEBUG
 #define Debug(l,FMT,V) ;
@@ -343,7 +356,15 @@ struct dbAddr *paddr;
       paddr->special = SPC_MOD;
       break;
       }
-      
+      case zDDMRecordSTATS:{
+      paddr->pfield = (void *)(pzDDM->pstats);
+      paddr->no_elements = zDDM_NCHIPS+1;
+      paddr->field_type = DBF_LONG;
+      paddr->field_size = sizeof(int);
+      paddr->dbr_field_type = DBR_LONG;
+      paddr->special = SPC_MOD;
+      break;
+      }
     }
    return(0);
 }
